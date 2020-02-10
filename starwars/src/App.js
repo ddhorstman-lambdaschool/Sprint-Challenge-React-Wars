@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import axios from "axios";
 import StarWarsCard from "./components/StarWarsCard";
-import { Container, Row, Col, Button, ButtonGroup, CardDeck } from "reactstrap";
+import { Container, Row, Col, Button, ButtonGroup } from "reactstrap";
 
-const App = () => {
+function App(){
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
   const [characters, setCharacters] = useState([{}]);

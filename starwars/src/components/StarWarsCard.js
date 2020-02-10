@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./StarWarsCard.css";
-import { Card, CardBody, CardHeader, CardText, CardTitle } from "reactstrap";
+import { Card, CardBody, CardHeader, CardText, CardTitle, CardFooter } from "reactstrap";
 import axios from "axios";
 
 function format(value, value_name) {
@@ -12,9 +12,20 @@ function format(value, value_name) {
     return value;
 }
 
-export default function StarWarsCard(props) {
+function StarWarsCard(props) {
     const [homeworldName, setHomeworldName] = useState("Unknown");
-    const { name, height, mass, hair_color, skin_color, eye_color, birth_year, gender, homeworld } = props.data;
+    const {
+        name,
+        height,
+        mass,
+        hair_color,
+        skin_color,
+        eye_color,
+        birth_year,
+        gender,
+        homeworld
+    } = props.data;
+
     useEffect(() => {
         homeworld &&
             axios
@@ -22,13 +33,14 @@ export default function StarWarsCard(props) {
                 .then(r => setHomeworldName(r.data.name))
                 .catch(console.error)
     }, [homeworld]);
-    return !name
+
+    return (!name)
         ? <Card />
         : (
             <Card className="person-card mx-auto mb-4">
                 <CardHeader>
                     <CardTitle tag="h2">{name}</CardTitle>
-                    </CardHeader>
+                </CardHeader>
                 <CardBody>
                     <CardText>Homeworld: {format(homeworldName)}</CardText>
                     <CardText>Gender: {format(gender, "gender")}</CardText>
@@ -37,7 +49,11 @@ export default function StarWarsCard(props) {
                     <CardText>Hair Color: {format(hair_color, "hair_color")}</CardText>
                     <CardText>Skin Color: {format(skin_color, "skin_color")}</CardText>
                     <CardText>Eye Color: {format(eye_color, "eye_color")}</CardText>
-                    <CardText>{format(birth_year, "birth_year")}</CardText>
                 </CardBody >
-            </Card >);
+                <CardFooter>
+                    <CardText>{format(birth_year, "birth_year")}</CardText>
+                </CardFooter>
+            </Card >
+        );
 }
+export default StarWarsCard;
