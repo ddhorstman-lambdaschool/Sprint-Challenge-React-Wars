@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import axios from "axios";
 import StarWarsCard from "./components/StarWarsCard";
-import { Container, Row, Col, Button, ButtonGroup } from "reactstrap";
+import { Container, Row, Col, Button, ButtonGroup, CardDeck } from "reactstrap";
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -45,7 +45,7 @@ const App = () => {
             previous: null
           })}>
           Previous
-      </Button>
+        </Button>
         <Button
           disabled={url.next === null}
           onClick={() => setUrl({
@@ -54,7 +54,7 @@ const App = () => {
             previous: null
           })}>
           Next
-      </Button>
+        </Button>
       </ButtonGroup>
       <Container>
         <Row>
