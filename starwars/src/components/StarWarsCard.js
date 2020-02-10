@@ -5,10 +5,14 @@ import axios from "axios";
 
 function format(value, value_name) {
     if (value === "n/a") return "None";
+    if (!value) return;
     value = value.slice(0, 1).toUpperCase() + value.slice(1);
-    if (value_name === "mass" && value !== "Unknown") return `${Math.round(parseInt(value.replace(',', '')) * 2.2)} lbs`;
-    if (value_name === "height" && value !== "Unknown") return `${Math.floor(value / 2.54 / 12)}' ${Math.round(value / 2.54 % 12)}"`;
-    if (value_name === "birth_year") return value === "Unknown" ? "Birthdate unknown" : `Born in ${value}`;
+    if (value_name === "mass" && value !== "Unknown")
+        return `${Math.round(parseInt(value.replace(',', '')) * 2.2)} lbs`;
+    if (value_name === "height" && value !== "Unknown")
+        return `${Math.floor(value / 2.54 / 12)}' ${Math.round(value / 2.54 % 12)}"`;
+    if (value_name === "birth_year")
+        return value === "Unknown" ? "Birthdate unknown" : `Born in ${value}`;
     return value;
 }
 
@@ -27,16 +31,15 @@ function StarWarsCard(props) {
     } = props.data;
 
     useEffect(() => {
-        homeworld &&
+        if (homeworld)
             axios
                 .get(homeworld)
                 .then(r => setHomeworldName(r.data.name))
                 .catch(console.error)
     }, [homeworld]);
 
-    return (!name)
-        ? <Card />
-        : (
+    return name
+        ? (
             <Card className="person-card mx-auto mb-4">
                 <CardHeader>
                     <CardTitle tag="h2">{name}</CardTitle>
@@ -54,6 +57,7 @@ function StarWarsCard(props) {
                     <CardText>{format(birth_year, "birth_year")}</CardText>
                 </CardFooter>
             </Card >
-        );
+        )
+        : <Card />;
 }
 export default StarWarsCard;

@@ -30,7 +30,6 @@ function App(){
       })
       .catch(console.error)
   }
-
     , [url.current]);
 
   return (
@@ -38,7 +37,7 @@ function App(){
       <h1 className="Header">React Wars</h1>
       <ButtonGroup className="mb-4">
         <Button
-          disabled={url.previous === null}
+          disabled={!url.previous}
           onClick={() => setUrl({
             next: null,
             current: url.previous,
@@ -47,7 +46,7 @@ function App(){
           Previous
         </Button>
         <Button
-          disabled={url.next === null}
+          disabled={!url.next}
           onClick={() => setUrl({
             next: null,
             current: url.next,
