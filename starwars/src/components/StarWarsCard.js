@@ -10,7 +10,7 @@ function format(value, value_name) {
     if (value_name === "mass" && value !== "Unknown")
         return `${Math.round(parseInt(value.replace(',', '')) * 2.2)} lbs`;
     if (value_name === "height" && value !== "Unknown")
-        return `${Math.floor(value / 2.54 / 12)}' ${Math.round(value / 2.54 % 12)}"`;
+        return `${Math.floor(value / 2.54 / 12)}'${Math.round(value / 2.54 % 12)}"`;
     if (value_name === "birth_year")
         return value === "Unknown" ? "Birthdate unknown" : `Born in ${value}`;
     return value;
