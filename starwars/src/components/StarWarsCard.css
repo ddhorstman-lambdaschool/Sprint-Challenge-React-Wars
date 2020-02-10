@@ -1,0 +1,8 @@
+.person-card ul {
+    list-style-type: none;
+    list-style-position: inside;
+    padding:0;
+}
+.person-card {
+    width: 30%;
+}

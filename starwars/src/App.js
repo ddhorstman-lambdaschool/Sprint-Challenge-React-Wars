@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import { Button } from "reactstrap";
 import axios from "axios";
+import StarWarsCard from "./components/StarWarsCard";
+import { Container, Row, Col } from "reactstrap";
+
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
@@ -13,7 +15,7 @@ const App = () => {
     axios
       .get("https://swapi.co/api/people/?format=json")
       .then(r => {
-        console.log(r.data.results);
+        console.log(r.data);
         setCharacters(r.data.results);
       })
       .catch(console.error)
@@ -24,7 +26,12 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
-      {characters.map(person => <Button>{person.name}</Button>)}
+      <Container>
+        <Row>
+          <Col xs="auto"></Col>
+          {characters.map((person, idx) => <StarWarsCard key={idx} data={person} />)}
+        </Row>
+      </Container>
     </div>
   );
 }
