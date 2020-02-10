@@ -40,7 +40,7 @@ const App = () => {
         <Button
           disabled={url.previous === null}
           onClick={() => setUrl({
-            next: url.current,
+            next: null,
             current: url.previous,
             previous: null
           })}>
@@ -51,7 +51,7 @@ const App = () => {
           onClick={() => setUrl({
             next: null,
             current: url.next,
-            previous: url.current
+            previous: null
           })}>
           Next
       </Button>
