@@ -58,7 +58,7 @@ function App(){
       <Container>
         <Row>
           <Col xs="auto" style={{ padding: "0px" }}></Col>
-          {characters.map((person, idx) => <StarWarsCard key={idx} data={person} />)}
+          {characters.map(person => <StarWarsCard key={person.name} data={person} />)}
         </Row>
       </Container>
     </div>
