@@ -9,7 +9,7 @@ export default function StarWarsCard(props) {
     const { name, height, mass, hair_color, skin_color, eye_color, birth_year, gender, homeworld } = props.data;
     if(name==="Luke")return <Card />;
     return (
-    <Card className="person-card mx-auto">
+    <Card className="person-card mx-auto mb-2">
         <CardHeader><CardTitle>{name}</CardTitle></CardHeader>
         <CardBody>
             <CardText>

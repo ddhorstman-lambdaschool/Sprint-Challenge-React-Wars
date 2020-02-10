@@ -28,7 +28,7 @@ const App = () => {
       <h1 className="Header">React Wars</h1>
       <Container>
         <Row>
-          <Col xs="auto"></Col>
+          <Col xs="auto" style={{padding:"0px"}}></Col>
           {characters.map((person, idx) => <StarWarsCard key={idx} data={person} />)}
         </Row>
       </Container>
